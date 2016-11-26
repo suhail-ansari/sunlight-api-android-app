@@ -1,0 +1,43 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.csci571.csci571hw9.BillFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- TODO: Update blank fragment layout -->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/bill_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/tabBackgroundColor"
+            app:tabIndicatorColor="@android:color/transparent">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/active_bill_tab"
+                android:text="ACTIVE BILLS"/>
+
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/legislator_tab_by_senate"
+                android:text="NEW BILLS"/>
+
+        </android.support.design.widget.TabLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/bill_list_container"></FrameLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

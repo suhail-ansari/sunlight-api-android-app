@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:padding="8dp"
+    android:background="@drawable/list_item_bg">
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="64dp"
+        app:srcCompat="@drawable/ic_blank"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/legislator_list_item_image" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/legislator_list_item_image"
+        android:layout_toEndOf="@+id/legislator_list_item_image"
+        android:layout_marginStart="27dp"
+        android:id="@+id/legislator_list_item_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/legislator_list_item_name"
+        android:layout_alignStart="@+id/legislator_list_item_name"
+        android:id="@+id/legislator_list_item_subtext" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/ic_right_chevron"
+        android:layout_marginEnd="14dp"
+        android:id="@+id/legislator_list_item_icon"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true" />
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<resources>
+
+    <style name="Theme.AppCompat" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+
+        <!---Below is the code for status bar color-->
+        <item name="android:navigationBarColor">#000000</item>
+    </style>
+</resources>

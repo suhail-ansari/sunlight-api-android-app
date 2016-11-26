@@ -1,0 +1,49 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.csci571.csci571hw9.CommitteeFragment">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- TODO: Update blank fragment layout -->
+        <android.support.design.widget.TabLayout
+            android:id="@+id/committee_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/tabBackgroundColor"
+            app:tabIndicatorColor="@android:color/transparent">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/house_committee_tab"
+                android:text="HOUSE"/>
+
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/senate_committee_tab"
+                android:text="SENATE"/>
+
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/joint_committee_tab"
+                android:text="JOINT"/>
+
+        </android.support.design.widget.TabLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/committee_list_container"></FrameLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
