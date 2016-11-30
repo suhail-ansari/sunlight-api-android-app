@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
@@ -77,6 +78,7 @@ public class LegislatorDetailActivity extends AppCompatActivity implements View.
             String twitterId = jsonObject.getString("twitter_id");
             String website = jsonObject.getString("website");
 
+            /*
             if(faceBookId == "null")
                 fbButton.setVisibility(View.GONE);
 
@@ -85,7 +87,7 @@ public class LegislatorDetailActivity extends AppCompatActivity implements View.
 
             if(website == "null")
                 websiteButton.setVisibility(View.GONE);
-
+            */
 
         } catch (JSONException error) {
             System.out.println("Error::");
@@ -255,28 +257,57 @@ public class LegislatorDetailActivity extends AppCompatActivity implements View.
                     break;
 
                 case R.id.fb_button:
-                    String faceBookId = jsonObject.getString("facebook_id");
-                    String fbUrl = "https://www.facebook.com/" + faceBookId;
-                    Intent fbIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(fbUrl));
-                    startActivity(fbIntent);
+                    if(jsonObject.has("facebook_id")){
+                        String faceBookId = jsonObject.getString("facebook_id");
+                        if(faceBookId != "null"){
+                            String fbUrl = "https://www.facebook.com/" + faceBookId;
+                            Intent fbIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(fbUrl));
+                            startActivity(fbIntent);
+                        } else {
+                            showToast("Facebook ID not available");
+                        }
+                    } else {
+                        showToast("Facebook ID not available");
+                    }
+
                     break;
 
                 case R.id.twitter_button:
-                    String twitterId = jsonObject.getString("twitter_id");
-                    String twitterUrl = "https://www.twitter.com/" + twitterId;
-                    Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl));
-                    startActivity(twitterIntent);
+                    if(jsonObject.has("twitter_id")){
+                        String twitterId = jsonObject.getString("twitter_id");
+                        if(twitterId != "null") {
+                            String twitterUrl = "https://www.twitter.com/" + twitterId;
+                            Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(twitterUrl));
+                            startActivity(twitterIntent);
+                        } else {
+                            showToast("Twitter ID not available");
+                        }
+                    } else {
+                        showToast("Twitter ID not available");
+                    }
                     break;
 
                 case R.id.website_button:
-                    String website = jsonObject.getString("website");
-                    Intent websiteIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(website));
-                    startActivity(websiteIntent);
+                    if(jsonObject.has("website")){
+                        String website = jsonObject.getString("website");
+                        if(website != "null") {
+                            Intent websiteIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(website));
+                            startActivity(websiteIntent);
+                        } else {
+                            showToast("Website not available");
+                        }
+                    } else {
+                        showToast("Website not available");
+                    }
                     break;
             }
         } catch (JSONException error) {
             System.out.println("Error::");
         }
+    }
+
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     public void handleFavoriteButtonClick(ImageButton favoriteButton) {

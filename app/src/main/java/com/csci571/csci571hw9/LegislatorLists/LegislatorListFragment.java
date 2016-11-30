@@ -230,6 +230,7 @@ public class LegislatorListFragment extends Fragment {
     private void displayIndex() {
 
         LinearLayout indexLayout = (LinearLayout) inflatedView.findViewById(R.id.legislator_list_index);
+        indexLayout.removeAllViews();
         indexLayout.setVisibility(View.VISIBLE);
         TextView textView;
         List<String> indexList = new ArrayList<String>(mapIndex.keySet());
@@ -266,6 +267,24 @@ public class LegislatorListFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String listType = getArguments().getString(LEGISLATOR_LIST_TYPE);
+        if (listType == "favorite") {
+
+            TextView loadingTextView = (TextView) inflatedView.findViewById(R.id.legislator_loading_text);
+            loadingTextView.setVisibility(View.VISIBLE);
+
+            LinearLayout indexLayout = (LinearLayout) inflatedView.findViewById(R.id.legislator_list_index);
+            indexLayout.setVisibility(View.GONE);
+
+            LocalStorage localStorage = LocalStorage.getInstance(getActivity());
+            JSONArray jsonArray = localStorage.getItems("legislator");
+            displayList(CustomUtils.getInstance().sortJsonArray(jsonArray, "last_name"));
+        }
     }
 
     /**

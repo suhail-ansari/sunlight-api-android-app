@@ -210,6 +210,21 @@ public class BillListFragment extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        String listType = getArguments().getString(BILL_TYPE);
+        if (listType == "favorite") {
+
+            TextView loadingTextView = (TextView) inflatedView.findViewById(R.id.bill_loading_text);
+            loadingTextView.setVisibility(View.VISIBLE);
+
+            LocalStorage localStorage = LocalStorage.getInstance(getActivity());
+            JSONArray jsonArray = localStorage.getItems("bill");
+            displayList(CustomUtils.getInstance().sortJsonArray(jsonArray, "introduced_on"));
+        }
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -258,12 +273,13 @@ public class BillListFragment extends Fragment {
                 if(!(jsonObject.getString("short_title") == "null")) {
                     billDescriptionView.setText(jsonObject.getString("short_title"));
                 } else if(!(jsonObject.getString("official_title") == "null")) {
-                    String officialTitle = jsonObject.getString("official_title");
-                    if (officialTitle.length() > 95) {
+                    //String officialTitle = jsonObject.getString("official_title");
+                    billDescriptionView.setText(jsonObject.getString("official_title"));
+                    /*if (officialTitle.length() > 95) {
                         billDescriptionView.setText(jsonObject.getString("official_title").substring(0, 95) + " ...");
                     } else {
                         billDescriptionView.setText(jsonObject.getString("official_title"));
-                    }
+                    }*/
 
                 } else {
                     billDescriptionView.setText("N.A");

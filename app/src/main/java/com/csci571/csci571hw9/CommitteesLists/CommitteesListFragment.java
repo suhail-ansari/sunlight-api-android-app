@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -205,6 +206,21 @@ public class CommitteesListFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String listType = getArguments().getString(COMMITTEE_TYPE);
+        if (listType == "favorite") {
+
+            TextView loadingTextView = (TextView) inflatedView.findViewById(R.id.committee_loading_text);
+            loadingTextView.setVisibility(View.VISIBLE);
+
+            LocalStorage localStorage = LocalStorage.getInstance(getActivity());
+            JSONArray jsonArray = localStorage.getItems("committee");
+            displayList(CustomUtils.getInstance().sortJsonArray(jsonArray, "name"));
+        }
     }
 
     /**

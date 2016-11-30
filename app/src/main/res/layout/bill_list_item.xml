@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="120dp"
-    android:padding="5dp"
-    android:background="@drawable/list_item_bg">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:background="@drawable/list_item_bg"
+    android:orientation="vertical">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/bill_date_text"
-        android:layout_marginBottom="11dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/bill_description_text" />
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
-        android:id="@+id/bill_id_text"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="12dp" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bill_id_text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1" />
+
+        <ImageView
+            app:srcCompat="@drawable/ic_right_chevron"
+            android:id="@+id/bill_icon"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="23dp"
+            android:layout_above="@+id/bill_description_text"
+            android:layout_height="18dp"
+            android:layout_width="18dp"
+            android:layout_marginTop="5dp" />
+    </LinearLayout>
 
     <TextView
         android:text="TextView"
@@ -31,15 +41,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/bill_description_text"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/bill_id_text" />
+        android:layout_alignStart="@+id/bill_id_text"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
 
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="match_parent"
-        app:srcCompat="@drawable/ic_right_chevron"
-        android:id="@+id/bill_icon"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="23dp"
-        android:layout_above="@+id/bill_description_text" />
-</RelativeLayout>
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bill_date_text"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/bill_description_text" />
+
+</LinearLayout>
